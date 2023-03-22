@@ -1,14 +1,22 @@
 #login-wrapper {
   display: flex;
   justify-content: center;
-
   form {
     width: 300px;
     display: flex;
     flex-direction: column;
 
     & input {
-      margin-bottom: 5px;
+      margin-bottom: 7px;
+      background-color: #F0EEF0;
+      padding: 7px 10px;
+      border: 2px solid #EDECEE;
+      border-radius: 5px;
+
+      &:focus {
+        background-color: white;
+        outline: solid #90abd8 1px;
+      }
     }
   }
 }
