@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Ubuntu;
+    src: url(assets/fonts/Ubuntu-Regular.ttf);
+}
 html {
+    font-family: Ubuntu;
   background-color: #FCFBFD;
 }

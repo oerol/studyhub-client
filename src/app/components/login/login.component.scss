@@ -1,6 +1,7 @@
 #login-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 150px;
 
   form {
     width: 300px;
@@ -19,6 +20,15 @@
         outline: solid #90abd8 1px;
       }
     }
+  }
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+
+  & img {
+    width: 50%;
   }
 }
 
@@ -47,10 +57,11 @@ a {
   color: #C7C5CB;
   margin-top: 10px;
   text-align: center;
+  font-size: 14px;
 }
 
 #register-info {
-  margin-top: 20px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   text-align: center;
