@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   showPasswordInput: boolean = false;
   error: boolean = false;
   buttonTexts = ['Continue', 'Login'];
-  @ViewChild('passwordInput', { static: false }) passwordInput!: ElementRef;
+  @ViewChild('passwordInput', { static: false }) passwordInput!: ElementRef<HTMLInputElement>;
   currentButtonText = this.buttonTexts[0];
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private changeDetectorRef: ChangeDetectorRef) {}
@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
         },
         (error: any) => {
           this.error = true;
+          this.passwordInput.nativeElement.value = "";
         }
       );
     }
