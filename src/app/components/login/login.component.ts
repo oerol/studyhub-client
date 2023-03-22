@@ -52,21 +52,23 @@ export class LoginComponent implements OnInit {
     if (this.currentLoginStep == 0) {
       this.handleFirstLoginStep();
     } else if (this.currentLoginStep == 1) {
-      let loginRequest: LoginRequest = {
-        email: this.myForm.value.email,
-        password: this.myForm.value.password,
-      };
-
-      this.userService.sendLoginRequest(loginRequest).subscribe(
-        (data: any) => {
-          console.log('Logging in with email:', this.myForm.value.email, 'and password:', this.myForm.value.password);
-          this.router.navigate(['/dashboard']);
-        },
-        (error: any) => {
-          this.error = true;
-          this.passwordInput.nativeElement.value = "";
-        }
-      );
+      if (this.passwordInput.nativeElement.value !== "") {
+        let loginRequest: LoginRequest = {
+          email: this.myForm.value.email,
+          password: this.myForm.value.password,
+        };
+  
+        this.userService.sendLoginRequest(loginRequest).subscribe(
+          (data: any) => {
+            console.log('Logging in with email:', this.myForm.value.email, 'and password:', this.myForm.value.password);
+            this.router.navigate(['/dashboard']);
+          },
+          (error: any) => {
+            this.error = true;
+            this.passwordInput.nativeElement.value = "";
+          }
+        );
+      }
     }
   }
 }
