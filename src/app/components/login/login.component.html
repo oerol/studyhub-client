@@ -4,7 +4,8 @@
         <form [formGroup]="myForm">
             <input type="email" name="email" formControlName="email" placeholder="Enter your email here">
             <input *ngIf="showPasswordInput" type="password" name="password" formControlName="password" placeholder="Enter your password here">
-            <button type="submit" (click)="handleLogin()">Continue with E-Mail</button>
+            <span *ngIf="error" id="authentification-error">You've entered a wrong email or password.</span>
+            <button type="submit" (click)="handleLogin()">{{currentButtonText}}</button>
         </form>
     </div>
 </div>
