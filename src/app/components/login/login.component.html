@@ -6,7 +6,7 @@
         <h1>Sign in</h1>
         <form [formGroup]="myForm">
             <input type="email" name="email" formControlName="email" placeholder="Enter your email here">
-            <div *ngIf="myForm.get('email')!.errors?.['email']" >
+            <div *ngIf="myForm.get('email')!.errors?.['email'] && showEmailErrors" >
                 Email is invalid.
               </div>
             <input #passwordInput *ngIf="showPasswordInput" type="password" name="password" formControlName="password" placeholder="Enter your password here">

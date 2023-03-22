@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   myForm!: FormGroup;
   currentLoginStep: number = 0;
   showPasswordInput: boolean = false;
+  showEmailErrors: boolean = false;
   error: boolean = false;
   buttonTexts = ['Continue', 'Login'];
   @ViewChild('passwordInput', { static: false }) passwordInput!: ElementRef<HTMLInputElement>;
@@ -25,6 +26,13 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: '',
     });
+
+    // hide errors if the user tries to correct his input
+    this.myForm.get("email")!.valueChanges.subscribe(() => {
+      if (this.myForm.get("email")!.valid) {
+        this.showEmailErrors = false;
+      }
+    })
   }
 
   handleFirstLoginStep() {
@@ -35,6 +43,8 @@ export class LoginComponent implements OnInit {
       this.passwordInput.nativeElement.focus();
       this.currentLoginStep++;
       this.currentButtonText = this.buttonTexts[1];
+    } else {
+      this.showEmailErrors = true;
     }
   }
 
