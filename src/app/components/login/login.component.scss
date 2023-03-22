@@ -1,6 +1,7 @@
 #login-wrapper {
   display: flex;
   justify-content: center;
+
   form {
     width: 300px;
     display: flex;
@@ -8,9 +9,9 @@
 
     & input {
       margin-bottom: 7px;
-      background-color: #F0EEF0;
+      background-color: #f0eef0;
       padding: 7px 10px;
-      border: 2px solid #EDECEE;
+      border: 2px solid #edecee;
       border-radius: 5px;
 
       &:focus {
@@ -21,8 +22,42 @@
   }
 }
 
+.button {
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+
+  cursor: pointer;
+}
+
+button[type='submit'] {
+  background-color: #4d7edf;
+  color: white;
+}
+
 #authentification-error {
   color: red;
   text-align: center;
   margin-bottom: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #C7C5CB;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#register-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#register-button {
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #bdbdbd;
 }
