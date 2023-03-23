@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ContentChildren, QueryList, AfterViewChecked, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginRequest } from 'src/app/interfaces/loginRequest';
 import { UserService } from 'src/app/services/user.service';
