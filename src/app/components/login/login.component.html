@@ -10,8 +10,8 @@
                 Email is invalid.
               </div>
             <input #passwordInput *ngIf="showPasswordInput" type="password" name="password" formControlName="password" placeholder="Enter your password here">
-            <span *ngIf="error" id="authentification-error">You've entered a wrong email or password.</span>
-            <button class="button" type="submit" (click)="handleLogin()">{{currentButtonText}}</button>
+            <span *ngIf="authentificationError" id="authentification-error">You've entered a wrong email or password.</span>
+            <button class="button" type="submit" (click)="handleLoginAttempt()">{{currentButtonText}}</button>
             <a href="/">Forgot your password?</a>
             <div id="register-info">
                 <span>Don't have an account?</span>
