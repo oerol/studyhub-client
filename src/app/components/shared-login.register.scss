@@ -72,3 +72,12 @@ a {
   background-color: white;
   border: 1px solid #bdbdbd;
 }
+
+.error-message {
+  padding: 5px;
+  border-radius: 5px;
+  color: #e33832;
+  border: 1px solid rgba(253, 62, 56, 0.5);
+  text-align: center;
+  margin-bottom: 5px;
+}
