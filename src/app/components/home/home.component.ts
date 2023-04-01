@@ -10,6 +10,9 @@ export class HomeComponent {
   constructor(private router: Router) {}
   toLogin() {
     this.router.navigate(['/login']);
+  }
+  toRegister() {
+    this.router.navigate(['/register']);
 
   }
 }
