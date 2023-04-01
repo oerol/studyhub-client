@@ -88,4 +88,8 @@ export class LoginComponent implements OnInit {
       this.handleSecondLoginStep();
     }
   }
+
+  toRegister() {
+    this.router.navigate(['/register']);
+  }
 }
