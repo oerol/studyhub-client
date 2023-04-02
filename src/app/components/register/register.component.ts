@@ -12,6 +12,9 @@ export class RegisterComponent implements OnInit {
   showPasswordError: boolean = false;
   showConfirmPasswordError: boolean = false;
 
+  errorColor = 'red';
+  correctColor = 'green';
+
   @ViewChild('requiredminlength') requireMinLength!: ElementRef;
   @ViewChild('requiredlowercase') requireLowerCase!: ElementRef;
   @ViewChild('requireduppercase') requireUpperCase!: ElementRef;
@@ -19,16 +22,39 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef) {}
 
+  handleSpecificPasswordError(element: ElementRef<any>, showError: boolean) {
+    element.nativeElement.style.color = showError ? this.errorColor : this.correctColor;
+  }
+
+  handleMinPasswordLength(passwordValue: string) {
+    const hasMinLength = passwordValue.length < 8;
+    this.handleSpecificPasswordError(this.requireMinLength, hasMinLength);
+  }
+
+  requireOneLowerCaseCharacter(passwordValue: string) {
+    const hasOneLowerCaseCharacter = !/[a-z]/.test(passwordValue);
+    this.handleSpecificPasswordError(this.requireLowerCase, hasOneLowerCaseCharacter);
+  }
+  requireOneUpperCaseCharacter(passwordValue: string) {
+    const hasOneUpperCaseCharacter = !/[A-Z]/.test(passwordValue);
+    this.handleSpecificPasswordError(this.requireUpperCase, hasOneUpperCaseCharacter);
+  }
+  requireOneNumber(passwordValue: string) {
+    const hasOneNumber = !/[0-9]/.test(passwordValue);
+    this.handleSpecificPasswordError(this.requireNumber, hasOneNumber);
+  }
+
   ngOnInit() {
-    this.myForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: [''],
-      confirmPassword: ['']
-    }, {validators: this.checkPasswords});
-
-
+    this.myForm = this.fb.group(
+      {
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        password: [''],
+        confirmPassword: [''],
+      },
+      { validators: this.checkPasswords }
+    );
 
     this.myForm.get('password')!.valueChanges.subscribe(() => {
       const passwordControl = this.myForm.get('password');
@@ -36,44 +62,27 @@ export class RegisterComponent implements OnInit {
       this.showPasswordError = true;
       this.changeDetectorRef.detectChanges();
 
-      if (passwordValue.length < 8) {
-        this.requireMinLength.nativeElement.style.color = 'red';
-      } else {
-        this.requireMinLength.nativeElement.style.color = 'green';
-      }
-
-      if (/[a-z]/.test(passwordValue)) {
-        this.requireLowerCase.nativeElement.style.color = 'green';
-      } else {
-        this.requireLowerCase.nativeElement.style.color = 'red';
-      }
-      if (/[A-Z]/.test(passwordValue)) {
-        this.requireUpperCase.nativeElement.style.color = 'green';
-      } else {
-        this.requireUpperCase.nativeElement.style.color = 'red';
-      }
-      if (/[0-9]/.test(passwordValue)) {
-        this.requireNumber.nativeElement.style.color = 'green';
-      } else {
-        this.requireNumber.nativeElement.style.color = 'red';
-      }
+      this.handleMinPasswordLength(passwordValue);
+      this.requireOneLowerCaseCharacter(passwordValue);
+      this.requireOneUpperCaseCharacter(passwordValue);
+      this.requireOneNumber(passwordValue);
     });
   }
-  
+
   // https://stackoverflow.com/a/51606362/14615037
-  checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => { 
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     let password = group.get('password')!.value;
-    let confirmPassword = group.get('confirmPassword')!.value
-    return password === confirmPassword ? null : { notSame: true }
-  }
+    let confirmPassword = group.get('confirmPassword')!.value;
+    return password === confirmPassword ? null : { notSame: true };
+  };
 
   onConfirmPasswordInput() {
     this.showConfirmPasswordError = true;
   }
 
   handleRegisterAttempt() {
+    this.showPasswordError = false;
   }
-  
 
   toLogin() {
     this.router.navigate(['/login']);
