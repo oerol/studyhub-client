@@ -5,13 +5,21 @@
     </div>
     <h1>Create a new account</h1>
     <form [formGroup]="myForm">
-      <input type="text" name="firstname" formControlName="firstname" placeholder="Firstname" />
-      <input type="text" name="lastname" formControlName="lastname" placeholder="Lastname" />
+      <input type="text" name="firstname" formControlName="firstName" placeholder="Firstname" />
+      <input type="text" name="lastname" formControlName="lastName" placeholder="Lastname" />
       <input type="email" name="email" formControlName="email" placeholder="Email" />
       <input type="password" name="password" formControlName="password" placeholder="Password" />
-      <input type="password" name="repeat-password" formControlName="repeat-password" placeholder="Repeat your password" />
-
-      <button class="button" type="submit">Register</button>
+      <div *ngIf="showPasswordError" id="password-error">
+        <span>Please make sure your password matches these criteria:</span>
+        <ul>
+          <li #requiredminlength >At least 8 characters</li>
+          <li #requiredlowercase>At least one lowercase character</li>
+          <li #requireduppercase>At least one uppercase character</li>
+          <li #requirednumber>At least one number</li>
+        </ul>
+      </div>
+      <input [class.inputError] = "showConfirmPasswordError && myForm.hasError('notSame')" (input)="onConfirmPasswordInput()" type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Repeat your password" />
+      <button class="button" type="submit" (click)="handleRegisterAttempt()">Register</button>
       <div id="register-info">
         <span>Already have an account?</span>
         <button id="login-button" class="button" (click)="toLogin()">Go to login</button>
