@@ -19,8 +19,7 @@
         </ul>
       </div>
       <input [class.inputError] = "showConfirmPasswordError && myForm.hasError('notSame')" (input)="onConfirmPasswordInput()" type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Repeat your password" />
-      <button class="button" type="submit" (click)="handleRegisterAttempt()">Register</button>
-      <app-submit-button [text]="'Register'"></app-submit-button>
+      <app-submit-button [text]="'Register'" (click)="handleRegisterAttempt()"></app-submit-button>
       <div id="register-info">
         <span>Already have an account?</span>
         <button id="login-button" class="button" (click)="toLogin()">Go to login</button>
