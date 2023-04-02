@@ -8,7 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
-import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
+import { SubmitButtonComponent } from './components/submit-button/submit-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +16,7 @@ import { LoadingButtonComponent } from './components/loading-button/loading-butt
     DashboardComponent,
     HomeComponent,
     RegisterComponent,
-    LoadingButtonComponent
+    SubmitButtonComponent
   ],
   imports: [
     BrowserModule,

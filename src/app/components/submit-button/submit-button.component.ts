@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-loading-button',
-  templateUrl: './loading-button.component.html',
-  styleUrls: ['./loading-button.component.scss']
+  selector: 'app-submit-button',
+  templateUrl: './submit-button.component.html',
+  styleUrls: ['./submit-button.component.scss']
 })
-export class LoadingButtonComponent {
+export class SubmitButtonComponent {
   @Input() text = "";
   
   handleButtonClick(element: HTMLElement ) {
