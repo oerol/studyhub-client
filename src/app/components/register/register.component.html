@@ -20,6 +20,7 @@
       </div>
       <input [class.inputError] = "showConfirmPasswordError && myForm.hasError('notSame')" (input)="onConfirmPasswordInput()" type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Repeat your password" />
       <button class="button" type="submit" (click)="handleRegisterAttempt()">Register</button>
+      <app-loading-button [text]="'Register'"></app-loading-button>
       <div id="register-info">
         <span>Already have an account?</span>
         <button id="login-button" class="button" (click)="toLogin()">Go to login</button>

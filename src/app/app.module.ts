@@ -8,13 +8,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoadingButtonComponent
   ],
   imports: [
     BrowserModule,
