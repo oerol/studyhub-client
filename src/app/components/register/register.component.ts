@@ -50,8 +50,8 @@ export class RegisterComponent implements OnInit {
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        password: [''],
-        confirmPassword: [''],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
       },
       { validators: this.checkPasswords }
     );

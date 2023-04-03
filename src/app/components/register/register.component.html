@@ -7,8 +7,8 @@
     <form [formGroup]="myForm">
       <input [class.inputError] = "showEmptyFieldsError && myForm.get('firstName')!.errors" type="text" name="firstname" formControlName="firstName" placeholder="Firstname" />
       <input [class.inputError] = "showEmptyFieldsError && myForm.get('lastName')!.errors" type="text" name="lastname" formControlName="lastName" placeholder="Lastname" />
-      <input type="email" name="email" formControlName="email" placeholder="Email" />
-      <input type="password" name="password" formControlName="password" placeholder="Password" />
+      <input [class.inputError] = "showEmptyFieldsError && myForm.get('email')!.errors" type="email" name="email" formControlName="email" placeholder="Email" />
+      <input [class.inputError] = "showEmptyFieldsError && myForm.get('password')!.errors" type="password" name="password" formControlName="password" placeholder="Password" />
       <div *ngIf="showPasswordError" id="password-error">
         <span>Please make sure your password matches these criteria:</span>
         <ul>
