@@ -5,8 +5,8 @@
     </div>
     <h1>Create a new account</h1>
     <form [formGroup]="myForm">
-      <input type="text" name="firstname" formControlName="firstName" placeholder="Firstname" />
-      <input type="text" name="lastname" formControlName="lastName" placeholder="Lastname" />
+      <input [class.inputError] = "showEmptyFieldsError && myForm.get('firstName')!.errors" type="text" name="firstname" formControlName="firstName" placeholder="Firstname" />
+      <input [class.inputError] = "showEmptyFieldsError && myForm.get('lastName')!.errors" type="text" name="lastname" formControlName="lastName" placeholder="Lastname" />
       <input type="email" name="email" formControlName="email" placeholder="Email" />
       <input type="password" name="password" formControlName="password" placeholder="Password" />
       <div *ngIf="showPasswordError" id="password-error">

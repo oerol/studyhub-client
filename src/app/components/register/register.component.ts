@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   myForm!: FormGroup;
   showPasswordError: boolean = false;
   showConfirmPasswordError: boolean = false;
+  showEmptyFieldsError: boolean = false;
 
   errorColor = 'red';
   correctColor = 'green';
@@ -79,9 +80,10 @@ export class RegisterComponent implements OnInit {
   onConfirmPasswordInput() {
     this.showConfirmPasswordError = true;
   }
-
+  
   handleRegisterAttempt() {
     this.showPasswordError = false;
+    this.showEmptyFieldsError = true;
   }
 
   toLogin() {
