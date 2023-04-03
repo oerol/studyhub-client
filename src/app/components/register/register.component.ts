@@ -90,12 +90,12 @@ export class RegisterComponent implements OnInit {
 
   handleSuccesfulRegisterAttempt() {
     console.log('succesful register');
-    this.isLoading = false;
     this.router.navigate(['/dashboard']);
-
+    
   }
   handleFailedRegisterAttempt(error: any) {
     console.log('failed register');
+    this.isLoading = false;
     if (error === "User with email already exists") {
       this.emailAlreadyTakenError = true;
     }
