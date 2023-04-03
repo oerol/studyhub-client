@@ -27,7 +27,7 @@ export class UserService {
         `Backend returned code ${error.status}, body was: `, error.error);
     }
     // Return an observable with a user-facing error message.
-    return throwError(() => false);
+    return throwError(() => error.error);
   }
 
   sendLoginRequest(loginRequest: LoginRequest): Observable<any> {

@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   showConfirmPasswordError: boolean = false;
   showEmptyFieldsError: boolean = false;
   isLoading: boolean = false;
+  emailAlreadyTakenError: boolean = false;
 
   @ViewChild('requiredminlength') requireMinLength!: ElementRef;
   @ViewChild('requiredlowercase') requireLowerCase!: ElementRef;
@@ -69,6 +70,11 @@ export class RegisterComponent implements OnInit {
       this.requireOneUpperCaseCharacter(passwordValue);
       this.requireOneNumber(passwordValue);
     });
+
+    // hide errors if the user tries to correct his input
+    this.myForm.get("email")!.valueChanges.subscribe(() => {
+      this.emailAlreadyTakenError = false;
+    })
   }
 
   // https://stackoverflow.com/a/51606362/14615037
@@ -85,10 +91,15 @@ export class RegisterComponent implements OnInit {
   handleSuccesfulRegisterAttempt() {
     console.log('succesful register');
     this.isLoading = false;
+    this.router.navigate(['/dashboard']);
+
   }
-  handleFailedRegisterAttempt() {
+  handleFailedRegisterAttempt(error: any) {
     console.log('failed register');
-    this.isLoading = false;
+    if (error === "User with email already exists") {
+      this.emailAlreadyTakenError = true;
+    }
+    
   }
 
   handleRegisterAttempt() {
@@ -110,7 +121,7 @@ export class RegisterComponent implements OnInit {
         // prettier-ignore
         this.userService.sendRegisterRequest(registerRequest).subscribe(
           (success: any) => {this.handleSuccesfulRegisterAttempt()},
-          (error: any) => {this.handleFailedRegisterAttempt()}
+          (error: any) => {this.handleFailedRegisterAttempt(error)}
         );
       }, 1500);
     }

@@ -8,6 +8,23 @@
     display: flex;
     flex-direction: column;
 
+    & .input-container {
+      display: flex;
+
+      & > input {
+        width: 100%;
+      }
+
+      & > .error-description {
+        position: absolute;
+        transform: translate(313px, 1px);
+
+        border: 1px solid rgb(219, 219, 219);
+        border-radius: 5px;
+        padding: 5px 10px;
+      }
+    }
+
     & input {
       margin-bottom: 7px;
       background-color: #f0eef0;

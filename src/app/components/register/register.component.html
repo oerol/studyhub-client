@@ -5,10 +5,28 @@
     </div>
     <h1>Create a new account</h1>
     <form [formGroup]="myForm">
-      <input [class.inputError] = "showEmptyFieldsError && myForm.get('firstName')!.errors" type="text" name="firstname" formControlName="firstName" placeholder="Firstname" />
-      <input [class.inputError] = "showEmptyFieldsError && myForm.get('lastName')!.errors" type="text" name="lastname" formControlName="lastName" placeholder="Lastname" />
-      <input [class.inputError] = "showEmptyFieldsError && myForm.get('email')!.errors" type="email" name="email" formControlName="email" placeholder="Email" />
-      <input [class.inputError] = "showEmptyFieldsError && myForm.get('password')!.errors" type="password" name="password" formControlName="password" placeholder="Password" />
+
+      <div class="input-container">
+        <input [class.inputError] = "showEmptyFieldsError && myForm.get('firstName')!.errors" type="text" name="firstname" formControlName="firstName" placeholder="Firstname" />
+        <div *ngIf="showEmptyFieldsError && myForm.get('firstName')!.errors" class="error-description">Please enter your firstname</div>
+      </div>
+
+      <div class="input-container">
+        <input [class.inputError] = "showEmptyFieldsError && myForm.get('lastName')!.errors" type="text" name="lastname" formControlName="lastName" placeholder="Lastname" />
+        <div *ngIf="showEmptyFieldsError && myForm.get('lastName')!.errors" class="error-description">Please enter your lastname</div>
+      </div>
+
+      <div class="input-container">
+        <input [class.inputError] = "showEmptyFieldsError && myForm.get('email')!.errors" type="email" name="email" formControlName="email" placeholder="Email" />
+        <div *ngIf="showEmptyFieldsError && myForm.get('email')!.errors" class="error-description">Please enter a valid email</div>
+        <div *ngIf="emailAlreadyTakenError" class="error-description">This email is already taken</div>
+      </div>
+
+      <div class="input-container">
+        <input [class.inputError] = "showEmptyFieldsError && myForm.get('password')!.errors" type="password" name="password" formControlName="password" placeholder="Password" />
+        <div *ngIf="showEmptyFieldsError && myForm.get('password')!.errors" class="error-description">Please enter a valid password</div>
+      </div>
+
       <div *ngIf="showPasswordError" id="password-error">
         <span>Please make sure your password matches these criteria:</span>
         <ul>
@@ -18,8 +36,15 @@
           <li #requirednumber>At least one number</li>
         </ul>
       </div>
-      <input [class.inputError] = "showConfirmPasswordError && myForm.hasError('notSame') || showEmptyFieldsError && myForm.get('confirmPassword')!.errors" (input)="onConfirmPasswordInput()" type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Repeat your password" />
+
+      <div class="input-container">
+        <input [class.inputError] = "showConfirmPasswordError && myForm.hasError('notSame') || showEmptyFieldsError && myForm.get('confirmPassword')!.errors" (input)="onConfirmPasswordInput()" type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Repeat your password" />
+        <div *ngIf="showConfirmPasswordError && myForm.hasError('notSame') || showEmptyFieldsError && myForm.get('confirmPassword')!.errors" class="error-description">Please repeat your password</div>
+      </div>
+
       <app-submit-button [text]="'Register'" [loading]="isLoading" (click)="handleRegisterAttempt()"></app-submit-button>
+
+
       <div id="register-info">
         <span>Already have an account?</span>
         <button id="login-button" class="button" (click)="toLogin()">Go to login</button>
