@@ -13,9 +13,6 @@ export class RegisterComponent implements OnInit {
   showConfirmPasswordError: boolean = false;
   showEmptyFieldsError: boolean = false;
 
-  errorColor = 'red';
-  correctColor = 'green';
-
   @ViewChild('requiredminlength') requireMinLength!: ElementRef;
   @ViewChild('requiredlowercase') requireLowerCase!: ElementRef;
   @ViewChild('requireduppercase') requireUpperCase!: ElementRef;
@@ -24,7 +21,9 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef) {}
 
   handleSpecificPasswordError(element: ElementRef<any>, showError: boolean) {
-    element.nativeElement.style.color = showError ? this.errorColor : this.correctColor;
+    const errorColor = 'red';
+    const correctColor = 'green';
+    element.nativeElement.style.color = showError ? errorColor : correctColor;
   }
 
   handleMinPasswordLength(passwordValue: string) {
