@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   showPasswordError: boolean = false;
   showConfirmPasswordError: boolean = false;
   showEmptyFieldsError: boolean = false;
+  isLoading: boolean = false;
 
   @ViewChild('requiredminlength') requireMinLength!: ElementRef;
   @ViewChild('requiredlowercase') requireLowerCase!: ElementRef;
@@ -81,8 +82,18 @@ export class RegisterComponent implements OnInit {
   }
   
   handleRegisterAttempt() {
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+
     this.showPasswordError = false;
     this.showEmptyFieldsError = true;
+
+    const inputIsCorrect = this.myForm.status === "VALID";
+    if (inputIsCorrect) {
+    }
   }
 
   toLogin() {
