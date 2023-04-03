@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(".*[a-z].*"), Validators.pattern(".*[A-Z].*"), Validators.pattern(".*[0-9].*")]],
         confirmPassword: ['', [Validators.required]],
       },
       { validators: this.checkPasswords }
@@ -83,35 +83,36 @@ export class RegisterComponent implements OnInit {
   }
 
   handleSuccesfulRegisterAttempt() {
-    console.log("succesful register");
+    console.log('succesful register');
     this.isLoading = false;
   }
   handleFailedRegisterAttempt() {
-    console.log("failed register");
+    console.log('failed register');
     this.isLoading = false;
   }
 
-  
   handleRegisterAttempt() {
     this.showPasswordError = false;
     this.showEmptyFieldsError = true;
-    this.isLoading = true;
 
-    const registerRequest: any = {
-      firstName: this.myForm.value.firstName,
-      lastName: this.myForm.value.lastName,
-      email: this.myForm.value.email,
-      password: this.myForm.value.password,
-    };
-
-    // prettier-ignore
-    this.userService.sendRegisterRequest(registerRequest).subscribe(
-      (success: any) => {this.handleSuccesfulRegisterAttempt()},
-      (error: any) => {this.handleFailedRegisterAttempt()}
-    );
-
-    const inputIsCorrect = this.myForm.status === "VALID";
+    const inputIsCorrect = this.myForm.status === 'VALID';
     if (inputIsCorrect) {
+      this.isLoading = true;
+
+      const registerRequest: any = {
+        firstName: this.myForm.value.firstName,
+        lastName: this.myForm.value.lastName,
+        email: this.myForm.value.email,
+        password: this.myForm.value.password,
+      };
+
+      setTimeout(() => {
+        // prettier-ignore
+        this.userService.sendRegisterRequest(registerRequest).subscribe(
+          (success: any) => {this.handleSuccesfulRegisterAttempt()},
+          (error: any) => {this.handleFailedRegisterAttempt()}
+        );
+      }, 1500);
     }
   }
 

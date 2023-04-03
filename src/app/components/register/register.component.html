@@ -18,7 +18,7 @@
           <li #requirednumber>At least one number</li>
         </ul>
       </div>
-      <input [class.inputError] = "showConfirmPasswordError && myForm.hasError('notSame')" (input)="onConfirmPasswordInput()" type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Repeat your password" />
+      <input [class.inputError] = "showConfirmPasswordError && myForm.hasError('notSame') || showEmptyFieldsError && myForm.get('confirmPassword')!.errors" (input)="onConfirmPasswordInput()" type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Repeat your password" />
       <app-submit-button [text]="'Register'" [loading]="isLoading" (click)="handleRegisterAttempt()"></app-submit-button>
       <div id="register-info">
         <span>Already have an account?</span>
