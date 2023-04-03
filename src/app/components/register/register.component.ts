@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('requireduppercase') requireUpperCase!: ElementRef;
   @ViewChild('requirednumber') requireNumber!: ElementRef;
 
-  constructor(private router: Router, private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef) {}
 
   handleSpecificPasswordError(element: ElementRef<any>, showError: boolean) {
     const errorColor = 'red';
@@ -80,16 +81,34 @@ export class RegisterComponent implements OnInit {
   onConfirmPasswordInput() {
     this.showConfirmPasswordError = true;
   }
+
+  handleSuccesfulRegisterAttempt() {
+    console.log("succesful register");
+    this.isLoading = false;
+  }
+  handleFailedRegisterAttempt() {
+    console.log("failed register");
+    this.isLoading = false;
+  }
+
   
   handleRegisterAttempt() {
-    this.isLoading = true;
-
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
-
     this.showPasswordError = false;
     this.showEmptyFieldsError = true;
+    this.isLoading = true;
+
+    const registerRequest: any = {
+      firstName: this.myForm.value.firstName,
+      lastName: this.myForm.value.lastName,
+      email: this.myForm.value.email,
+      password: this.myForm.value.password,
+    };
+
+    // prettier-ignore
+    this.userService.sendRegisterRequest(registerRequest).subscribe(
+      (success: any) => {this.handleSuccesfulRegisterAttempt()},
+      (error: any) => {this.handleFailedRegisterAttempt()}
+    );
 
     const inputIsCorrect = this.myForm.status === "VALID";
     if (inputIsCorrect) {

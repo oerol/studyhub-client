@@ -36,4 +36,10 @@ export class UserService {
     );
   }
 
+  sendRegisterRequest(registerRequest: any): Observable<any> {
+    return this.http.post("/api/user", registerRequest).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 }
