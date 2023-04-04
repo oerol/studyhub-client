@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SubmitButtonComponent } from './components/submit-button/submit-button.component';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { SubmitButtonComponent } from './components/submit-button/submit-button.
     DashboardComponent,
     HomeComponent,
     RegisterComponent,
-    SubmitButtonComponent
+    SubmitButtonComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
