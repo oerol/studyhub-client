@@ -7,13 +7,13 @@
     <form [formGroup]="myForm">
 
       <div class="input-container">
-        <input [class.inputError] = "showEmptyFieldsError && myForm.get('firstName')!.errors" type="text" name="firstname" formControlName="firstName" placeholder="Firstname" />
-        <div *ngIf="showEmptyFieldsError && myForm.get('firstName')!.errors" class="error-description">Please enter your firstname</div>
+        <input [class.inputError] = "showEmptyFieldsError && myForm.get('firstName')!.errors" type="text" name="firstname" formControlName="firstName" placeholder="First Name" />
+        <div *ngIf="showEmptyFieldsError && myForm.get('firstName')!.errors" class="error-description">Please enter your first name</div>
       </div>
 
       <div class="input-container">
-        <input [class.inputError] = "showEmptyFieldsError && myForm.get('lastName')!.errors" type="text" name="lastname" formControlName="lastName" placeholder="Lastname" />
-        <div *ngIf="showEmptyFieldsError && myForm.get('lastName')!.errors" class="error-description">Please enter your lastname</div>
+        <input [class.inputError] = "showEmptyFieldsError && myForm.get('lastName')!.errors" type="text" name="lastname" formControlName="lastName" placeholder="Last Name" />
+        <div *ngIf="showEmptyFieldsError && myForm.get('lastName')!.errors" class="error-description">Please enter your last name</div>
       </div>
 
       <div class="input-container">
