@@ -117,6 +117,7 @@ export class RegisterComponent implements OnInit {
   handleRegisterAttempt() {
     this.showPasswordError = false;
     this.showEmptyFieldsError = true;
+    this.errorMessage = "";
 
     const inputIsCorrect = this.myForm.status === 'VALID';
     if (inputIsCorrect) {
