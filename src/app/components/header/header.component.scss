@@ -1,12 +1,11 @@
 header {
-    background-color: rgb(255, 0, 0);
-    backdrop-filter: blur(15px);
-
     display: flex;
     height: 45px;
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
+    background-color: rgba(55, 56, 58, 0.4);
+    backdrop-filter: blur(15px);
 
     #left {
         display: flex;
@@ -17,14 +16,23 @@ header {
         display: flex;
         gap: 5px;
         list-style: none;
+        padding-left: 20px;
 
         & li {
-            padding: 0 10px;
+            padding: 5px 10px;
+            transition: 0.3s ease-out background-color;
+
+            &:hover {
+                background-color: rgba(55, 56, 58, 0.4);
+                border-radius: 5px;
+            }
         }
 
         & a {
             text-decoration: none;
             color: white;
+            font-size: 15px;
+            font-weight: bold;
         }
     }
 
