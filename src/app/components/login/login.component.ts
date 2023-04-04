@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   @ViewChild('passwordInput', { static: false }) passwordInput!: ElementRef<HTMLInputElement>;
 
   showEmailErrors: boolean = false;
-  authentificationError: boolean = false;
+  errorMessage: string = '';
+  isLoading: boolean = false;
 
   buttonTexts = ['Continue', 'Login'];
   currentButtonText = this.buttonTexts[0];
@@ -58,9 +59,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  handleAuthentificationError() {
-    this.authentificationError = true;
+  handleAuthentificationError(error: any) {
     this.passwordInput.nativeElement.value = "";
+    this.isLoading = false;
+    
+    if (error.status === 401) {
+      this.errorMessage = "You've entered a wrong email or password.";
+    }
+
+    if (error.status >= 500) {
+      this.errorMessage = "Couldn't connect to the server. Please try again later.";
+    }
   }
 
   handleLogin() {
@@ -69,16 +78,21 @@ export class LoginComponent implements OnInit {
   }
 
   handleLoginRequest() {
+    this.errorMessage = '';
+    this.isLoading = true;
+
     const loginRequest: LoginRequest = {
       email: this.myForm.value.email,
       password: this.myForm.value.password,
     };
-    
-    // prettier-ignore
-    this.userService.sendLoginRequest(loginRequest).subscribe(
-      (success: any) => {this.handleLogin()},
-      (error: any) => {this.handleAuthentificationError()}
-    );
+
+    setTimeout(() => {
+      // prettier-ignore
+      this.userService.sendLoginRequest(loginRequest).subscribe(
+        (success: any) => {this.handleLogin()},
+        (error: any) => {this.handleAuthentificationError(error)}
+      );
+    }, 1500);
   }
 
   handleLoginAttempt() {
