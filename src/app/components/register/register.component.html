@@ -39,11 +39,11 @@
 
       <div class="input-container">
         <input [class.inputError] = "showConfirmPasswordError && myForm.hasError('notSame') || showEmptyFieldsError && myForm.get('confirmPassword')!.errors" (input)="onConfirmPasswordInput()" type="password" name="confirm-password" formControlName="confirmPassword" placeholder="Repeat your password" />
-        <div *ngIf="showConfirmPasswordError && myForm.hasError('notSame') || showEmptyFieldsError && myForm.get('confirmPassword')!.errors" class="error-description">Please repeat your password</div>
+        <div *ngIf="showEmptyFieldsError && myForm.get('confirmPassword')!.errors" class="error-description">Please repeat your password</div>
       </div>
 
       <app-submit-button [text]="'Register'" [loading]="isLoading" (click)="handleRegisterAttempt()"></app-submit-button>
-
+      <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
 
       <div id="register-info">
         <span>Already have an account?</span>

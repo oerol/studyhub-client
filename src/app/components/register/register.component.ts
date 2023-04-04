@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   showEmptyFieldsError: boolean = false;
   isLoading: boolean = false;
   emailAlreadyTakenError: boolean = false;
+  errorMessage: string = '';
 
   @ViewChild('requiredminlength') requireMinLength!: ElementRef;
   @ViewChild('requiredlowercase') requireLowerCase!: ElementRef;
@@ -53,7 +54,16 @@ export class RegisterComponent implements OnInit {
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(".*[a-z].*"), Validators.pattern(".*[A-Z].*"), Validators.pattern(".*[0-9].*")]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern('.*[a-z].*'),
+            Validators.pattern('.*[A-Z].*'),
+            Validators.pattern('.*[0-9].*'),
+          ],
+        ],
         confirmPassword: ['', [Validators.required]],
       },
       { validators: this.checkPasswords }
@@ -72,9 +82,9 @@ export class RegisterComponent implements OnInit {
     });
 
     // hide errors if the user tries to correct his input
-    this.myForm.get("email")!.valueChanges.subscribe(() => {
+    this.myForm.get('email')!.valueChanges.subscribe(() => {
       this.emailAlreadyTakenError = false;
-    })
+    });
   }
 
   // https://stackoverflow.com/a/51606362/14615037
@@ -91,15 +101,17 @@ export class RegisterComponent implements OnInit {
   handleSuccesfulRegisterAttempt() {
     console.log('succesful register');
     this.router.navigate(['/dashboard']);
-    
   }
   handleFailedRegisterAttempt(error: any) {
     console.log('failed register');
     this.isLoading = false;
-    if (error === "User with email already exists") {
+    if (error.error === 'User with email already exists') {
       this.emailAlreadyTakenError = true;
     }
-    
+
+    if (error.status >= 500) {
+      this.errorMessage = "Couldn't connect to the server. Please try again later.";
+    }
   }
 
   handleRegisterAttempt() {
