@@ -6,10 +6,17 @@ header {
     padding: 0 15px;
     background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(15px);
+    color: white;
 
     #left {
         display: flex;
         align-items: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
     }
 
     #menu-links {
@@ -26,12 +33,6 @@ header {
             &:hover {
                 background-color: rgba(55, 56, 58, 0.4);
             }
-        }
-
-        & a {
-            text-decoration: none;
-            color: white;
-            font-size: 14px;
         }
     }
 
