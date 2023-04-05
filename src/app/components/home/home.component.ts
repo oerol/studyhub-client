@@ -15,4 +15,7 @@ export class HomeComponent {
     this.router.navigate(['/register']);
 
   }
+  toDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
 }
