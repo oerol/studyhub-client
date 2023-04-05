@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SubmitButtonComponent } from './components/submit-button/submit-button.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProfileComponent } from './components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { HeaderComponent } from './components/header/header.component';
     HomeComponent,
     RegisterComponent,
     SubmitButtonComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
