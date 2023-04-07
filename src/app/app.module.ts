@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SubmitButtonComponent } from './components/submit-button/submit-button.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CoursesOverviewComponent } from './components/courses-overview/courses-overview.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     SubmitButtonComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    CoursesOverviewComponent
   ],
   imports: [
     BrowserModule,
