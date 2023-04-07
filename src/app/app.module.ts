@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CoursesOverviewComponent } from './components/courses-overview/courses-overview.component';
 import { CourseComponent } from './components/course/course.component';
+import { CourseStatusComponent } from './components/course-status/course-status.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { CourseComponent } from './components/course/course.component';
     HeaderComponent,
     ProfileComponent,
     CoursesOverviewComponent,
-    CourseComponent
+    CourseComponent,
+    CourseStatusComponent
   ],
   imports: [
     BrowserModule,
