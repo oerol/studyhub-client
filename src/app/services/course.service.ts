@@ -18,12 +18,12 @@ export class CourseService {
     },
     {
       title: 'Englisch C2',
-      status: 'archived',
+      status: 'active',
       description: 'Die Inhalte von Englisch C2 dienen dazu, ein tiefgehendes Verständis der Grammatik...',
     },
     {
       title: 'Unternehmensberatung',
-      status: 'archived',
+      status: 'active',
       description: 'Das Modul Unternehmensberatung bietet einen Überblick über Beratungsprozesse, Methoden...',
     },
     {
