@@ -16,6 +16,26 @@ export class CourseService {
       status: 'active',
       description: 'In diesem Modul geht es um die Erfassung und Aufarbeitung von Kundenanforderungen im...',
     },
+    {
+      title: 'Englisch C2',
+      status: 'archived',
+      description: 'Die Inhalte von Englisch C2 dienen dazu, ein tiefgehendes Verständis der Grammatik...',
+    },
+    {
+      title: 'Unternehmensberatung',
+      status: 'archived',
+      description: 'Das Modul Unternehmensberatung bietet einen Überblick über Beratungsprozesse, Methoden...',
+    },
+    {
+      title: 'Einführung in die Betriebswirtschaftslehre',
+      status: 'archived',
+      description: 'EBWL vermittelt grundlegende Konzepte und Prinzipien der BWL, einschließlich Finanzen...',
+    },
+    {
+      title: 'Datenbankmanagementsysteme',
+      status: 'archived',
+      description: 'DBMS sind Softwareanwendungen zur Organisation und Verwaltung von Datenbanken und helfen...',
+    },
   ];
 
   constructor() {}
