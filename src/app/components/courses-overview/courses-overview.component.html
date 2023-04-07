@@ -2,8 +2,11 @@
 <div class="title-description">Here's an overview of your current courses</div>
 
 <div id="course-view-switcher">
-    <button #recentButton class="active" (click)="setActiveButton(recentButton)">Recent</button>
-    <button #upcomingButton (click)="setActiveButton(upcomingButton)">Upcoming</button>
-    <button #reviseButton (click)="setActiveButton(reviseButton)">Revise</button>
-  </div>
-  
+  <button #recentButton class="active" (click)="setActiveButton(recentButton)">Recent</button>
+  <button #upcomingButton (click)="setActiveButton(upcomingButton)">Upcoming</button>
+  <button #reviseButton (click)="setActiveButton(reviseButton)">Revise</button>
+</div>
+
+<div id="course-list" >
+    <app-course *ngFor="let course of courses" [title]="course.title" [status]="course.status" [description]="course.description"></app-course>
+</div>

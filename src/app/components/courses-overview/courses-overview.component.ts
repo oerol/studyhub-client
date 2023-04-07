@@ -1,4 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
+import { Course } from 'src/app/interfaces/course';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-courses-overview',
@@ -6,7 +8,10 @@ import { Component, ElementRef } from '@angular/core';
   styleUrls: ['./courses-overview.component.scss']
 })
 export class CoursesOverviewComponent {
-  constructor(private elementRef: ElementRef) {}
+  courses: Course[] = [];
+  constructor(private courseService: CourseService, private elementRef: ElementRef) {
+    this.courses = courseService.getCourses();
+  }
 
   setActiveButton(button: HTMLButtonElement): void {
     const buttons = this.elementRef.nativeElement.querySelectorAll('button');

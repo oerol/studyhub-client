@@ -12,6 +12,7 @@ import { SubmitButtonComponent } from './components/submit-button/submit-button.
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CoursesOverviewComponent } from './components/courses-overview/courses-overview.component';
+import { CourseComponent } from './components/course/course.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { CoursesOverviewComponent } from './components/courses-overview/courses-
     SubmitButtonComponent,
     HeaderComponent,
     ProfileComponent,
-    CoursesOverviewComponent
+    CoursesOverviewComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
