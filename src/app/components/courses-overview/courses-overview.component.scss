@@ -1,10 +1,38 @@
 .title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 5px 0;
-
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 5px 0;
 }
 .title-description {
-    color: #777777;
+  color: #777777;
 }
 
+#course-view-switcher {
+  margin-top: 30px;
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 15px;
+    font-weight: bold;
+    color: #282828;
+    padding-bottom: 15px;
+
+    &.active {
+      color: #4d69cf;
+      border-bottom: 2px solid #4d69cf;
+      position: relative; /* z-index */
+      z-index: 1;
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #F6F6F6;
+    transform: translateY(-2px);
+  }
+}
