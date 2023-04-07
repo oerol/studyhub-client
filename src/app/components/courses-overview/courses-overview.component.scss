@@ -41,5 +41,7 @@
 #course-list {
     margin-top: 30px;
     display: flex;
-    gap: 50px;
+    gap: 35px;
+
+    overflow-x: hidden; /* todo */
 }
