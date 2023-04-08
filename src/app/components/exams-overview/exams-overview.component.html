@@ -1,0 +1,47 @@
+<div id="exams-overview">
+  <div class="title">My exams</div>
+<div class="title-description">You have 2 upcoming exams and you’ve completed 1 this semester.</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Date</th>
+    <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+  </ng-container>
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Type</th>
+    <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+  </ng-container>
+  <ng-container matColumnDef="attempts">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number"># of Attempts</th>
+    <td mat-cell *matCellDef="let element">{{ element.attempts }}</td>
+  </ng-container>
+  <ng-container matColumnDef="progress">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Progress</th>
+    <td mat-cell *matCellDef="let element">{{ element.progress }}</td>
+  </ng-container>
+  <ng-container matColumnDef="credits">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Credits</th>
+    <td mat-cell *matCellDef="let element">{{ element.credits }}</td>
+  </ng-container>
+  <ng-container matColumnDef="difficulty">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Difficulty</th>
+    <td mat-cell *matCellDef="let element">{{ element.difficulty }}</td>
+  </ng-container>
+  <ng-container matColumnDef="desiredGrade">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Desired Grade</th>
+    <td mat-cell *matCellDef="let element">{{ element.desiredGrade }}</td>
+  </ng-container>
+  <ng-container matColumnDef="actualGrade">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Actual Grade</th>
+    <td mat-cell *matCellDef="let element">{{ element.actualGrade }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+</div>

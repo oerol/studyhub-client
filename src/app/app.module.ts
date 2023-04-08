@@ -14,6 +14,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CoursesOverviewComponent } from './components/courses-overview/courses-overview.component';
 import { CourseComponent } from './components/course/course.component';
 import { CourseStatusComponent } from './components/course-status/course-status.component';
+import { ExamsOverviewComponent } from './components/exams-overview/exams-overview.component';
+import { MatTableModule } from '@angular/material/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +29,16 @@ import { CourseStatusComponent } from './components/course-status/course-status.
     ProfileComponent,
     CoursesOverviewComponent,
     CourseComponent,
-    CourseStatusComponent
+    CourseStatusComponent,
+    ExamsOverviewComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

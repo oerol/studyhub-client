@@ -1,0 +1,41 @@
+#exams-overview {
+  margin-top: 50px;
+}
+
+.title {
+  /* duplicate */
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 5px 0;
+}
+.title-description {
+  color: #777777;
+}
+
+table {
+  margin-top: 30px;
+}
+
+.mat-mdc-table {
+  box-shadow: none;
+  border: 1px solid #d6d6d6;
+  font-size: 14px;
+
+  // https://stackoverflow.com/a/63451688/14615037
+  border-radius: 8px;
+  overflow:hidden !important;
+
+  .mdc-data-table__header-row {
+    background-color: #eaeaec;
+    height: 45px;
+  }
+
+  .mat-mdc-header-cell,
+  .mdc-data-table__cell {
+    border-right: 1px solid #d6d6d6;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
