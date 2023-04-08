@@ -16,7 +16,8 @@ import { CourseComponent } from './components/course/course.component';
 import { CourseStatusComponent } from './components/course-status/course-status.component';
 import { ExamsOverviewComponent } from './components/exams-overview/exams-overview.component';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatSortModule } from '@angular/material/sort';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,9 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
