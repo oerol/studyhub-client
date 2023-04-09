@@ -1,4 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { Course } from 'src/app/interfaces/course';
 import { CourseService } from 'src/app/services/course.service';
 
@@ -9,7 +10,7 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class CoursesOverviewComponent {
   courses: Course[] = [];
-  constructor(private courseService: CourseService, private elementRef: ElementRef) {
+  constructor(private courseService: CourseService, private router: Router, private elementRef: ElementRef) {
     this.courses = courseService.getCourses();
   }
 
@@ -23,4 +24,7 @@ export class CoursesOverviewComponent {
     button.classList.add('active');
   }
 
+  goToCourses() {
+    this.router.navigate(['/']);
+  }
 }

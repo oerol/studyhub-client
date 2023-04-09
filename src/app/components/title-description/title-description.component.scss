@@ -1,0 +1,22 @@
+.title {
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 5px 0;
+    cursor: pointer;
+  
+    &::after {
+      content: url(/assets/icons/arrow-outward.svg);
+      margin-left: 10px;
+      opacity: 0;
+      transition: 0.25s ease-out;
+    }
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  .title-description {
+    color: #777777;
+  }

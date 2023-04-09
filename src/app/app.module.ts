@@ -18,6 +18,7 @@ import { ExamsOverviewComponent } from './components/exams-overview/exams-overvi
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TitleDescriptionComponent } from './components/title-description/title-description.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoursesOverviewComponent,
     CourseComponent,
     CourseStatusComponent,
-    ExamsOverviewComponent
+    ExamsOverviewComponent,
+    TitleDescriptionComponent
   ],
   imports: [
     BrowserModule,

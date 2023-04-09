@@ -1,6 +1,5 @@
 <div id="exams-overview">
-  <div class="title">My exams</div>
-<div class="title-description">You have 2 upcoming exams and you've completed 1 this semester.</div>
+<app-title-description (clickEvent)="goToExams()" [title]="'My exams'" [description]="'You have 2 upcoming exams and you\'ve completed 1 this semester.'"></app-title-description>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="name">

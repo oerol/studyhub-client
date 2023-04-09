@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Exam } from 'src/app/interfaces/exam';
 import { ExamService } from 'src/app/services/exam.service';
 
@@ -13,7 +14,7 @@ export class ExamsOverviewComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'date', 'type', 'attempts', 'progress', 'credits', 'difficulty', 'desiredGrade', 'actualGrade'];
   dataSource: MatTableDataSource<Exam>;
 
-  constructor(private examService: ExamService) {
+  constructor(private examService: ExamService, private router: Router) {
     this.dataSource = new MatTableDataSource(examService.getExams());
   }
 
@@ -21,5 +22,9 @@ export class ExamsOverviewComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  goToExams() {
+    this.router.navigate(['/'])
   }
 }
