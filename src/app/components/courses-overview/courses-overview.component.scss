@@ -36,7 +36,7 @@
   overflow-x: hidden; /* todo */
 }
 
-#scroll-right{
+.scroller {
   cursor: pointer;
   opacity: 0;
   transition: 0.3s ease-out opacity;
@@ -48,4 +48,8 @@
   background-color: rgba(143, 143, 143,1);
   height: 242px;
   position: absolute;
+}
+
+#scroll-left{
+  transform: rotate(180deg);
 }

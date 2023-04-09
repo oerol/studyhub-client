@@ -10,9 +10,11 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class CoursesOverviewComponent implements AfterViewInit {
   courses: Course[] = [];
-  showRightScroll: boolean = false;
+  showLeftScroll: boolean = false;
+  showRightScroll: boolean = true;
   @ViewChild('courseList') courseList!: ElementRef<HTMLElement>;
   @ViewChild('scrollRight') scrollRight!: ElementRef<HTMLElement>;
+  @ViewChild('scrollLeft') scrollLeft!: ElementRef<HTMLElement>;
 
   constructor(private courseService: CourseService, private router: Router, private elementRef: ElementRef) {
     this.courses = courseService.getCourses();
@@ -38,15 +40,35 @@ export class CoursesOverviewComponent implements AfterViewInit {
     this.router.navigate(['/']);
   }
 
+  handleScroller(scroller: ElementRef, show: boolean) {
+    if (show) {
+      scroller.nativeElement.style.opacity = "1"
+    } else {
+      scroller.nativeElement.style.opacity = "0"
+    }
+  }
+
   onMouseOver(e: MouseEvent) {
-    this.scrollRight.nativeElement.style.opacity = "1"
+    this.handleScroller(this.scrollRight, this.showRightScroll)
+    this.handleScroller(this.scrollLeft, this.showLeftScroll)
   }
   onMouseLeave(e: MouseEvent) {
-    this.scrollRight.nativeElement.style.opacity = "0"
+    this.handleScroller(this.scrollRight, false)
+    this.handleScroller(this.scrollLeft, false)
+
   }
 
   scrollToTheRight() {
     const courseListScrollWidth = this.courseList.nativeElement.scrollWidth;
     this.courseList.nativeElement.scroll({left: courseListScrollWidth, behavior: 'smooth'})
+    this.showRightScroll = false;
+    this.showLeftScroll = true;
+    this.handleScroller(this.scrollRight, false);
+  }
+  scrollToTheLeft() {
+    this.courseList.nativeElement.scroll({left: 0, behavior: 'smooth'})
+    this.showLeftScroll = false;
+    this.showRightScroll = true;
+    this.handleScroller(this.scrollLeft, false);
   }
 }
