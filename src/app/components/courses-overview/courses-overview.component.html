@@ -3,10 +3,11 @@
   <button #recentButton class="active" (click)="setActiveButton(recentButton)">Recent</button>
   <button #upcomingButton (click)="setActiveButton(upcomingButton)">Upcoming</button>
   <button #reviseButton (click)="setActiveButton(reviseButton)">Revise</button>
+  <div #viewSwitcherIndicator id="indicator"></div>
 </div>
 
 <div #courseList id="course-list" (mouseover)="onMouseOver($event)" (mouseleave)="onMouseLeave($event)">
-  
+
   <div #scrollLeft id="scroll-left" class="scroller" (click)="scrollToTheLeft()">
     <img src="assets/icons/arrow-right.svg" alt="">
   </div>

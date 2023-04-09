@@ -15,6 +15,8 @@ export class CoursesOverviewComponent implements AfterViewInit {
   @ViewChild('courseList') courseList!: ElementRef<HTMLElement>;
   @ViewChild('scrollRight') scrollRight!: ElementRef<HTMLElement>;
   @ViewChild('scrollLeft') scrollLeft!: ElementRef<HTMLElement>;
+  @ViewChild('recentButton') firstButton!: ElementRef<HTMLElement>;
+  @ViewChild('viewSwitcherIndicator') viewSwitcherIndicator!: ElementRef<HTMLElement>;
 
   constructor(private courseService: CourseService, private router: Router, private elementRef: ElementRef) {
     this.courses = courseService.getCourses();
@@ -24,11 +26,16 @@ export class CoursesOverviewComponent implements AfterViewInit {
     const courseListWidth = this.courseList.nativeElement.offsetWidth;
     const scrollRightWidth = this.scrollRight.nativeElement.offsetWidth;
     this.scrollRight.nativeElement.style.transform = `translateX(${courseListWidth - scrollRightWidth}px)`;
+
+    this.viewSwitcherIndicator.nativeElement.style.width = `${this.firstButton.nativeElement.clientWidth}px`
   }
 
   setActiveButton(button: HTMLButtonElement): void {
     const buttons = this.elementRef.nativeElement.querySelectorAll('button');
-    console.log(this.elementRef.nativeElement);
+    const newPosition = button.offsetLeft - button.parentElement!.offsetLeft;
+
+    this.viewSwitcherIndicator.nativeElement.style.width = `${button.clientWidth}px`
+    this.viewSwitcherIndicator.nativeElement.style.transform = `translateX(${newPosition}px)`
     
     buttons.forEach((btn: HTMLButtonElement) => {
       btn.classList.remove('active');
