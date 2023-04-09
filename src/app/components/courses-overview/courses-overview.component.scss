@@ -35,3 +35,17 @@
 
   overflow-x: hidden; /* todo */
 }
+
+#scroll-right{
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.3s ease-out opacity;
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  background-color: rgba(143, 143, 143,1);
+  height: 242px;
+  position: absolute;
+}
