@@ -1,5 +1,6 @@
 .course {
     width: 300px;
+    animation: fadein 0.5s;
     .image {
         height: 150px;
         width: 100%;
@@ -20,4 +21,9 @@
         color: #777777;
         font-size: 12px;
     }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
