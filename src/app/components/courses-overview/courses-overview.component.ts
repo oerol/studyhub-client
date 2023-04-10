@@ -6,7 +6,7 @@ import { CourseService } from 'src/app/services/course.service';
 @Component({
   selector: 'app-courses-overview',
   templateUrl: './courses-overview.component.html',
-  styleUrls: ['./courses-overview.component.scss']
+  styleUrls: ['./courses-overview.component.scss'],
 })
 export class CoursesOverviewComponent implements AfterViewInit {
   courses: Course[] = []; /* courses visible to the user */
@@ -29,21 +29,21 @@ export class CoursesOverviewComponent implements AfterViewInit {
     const scrollRightWidth = this.scrollRight.nativeElement.offsetWidth;
     this.scrollRight.nativeElement.style.transform = `translateX(${courseListWidth - scrollRightWidth}px)`;
 
-    this.viewSwitcherIndicator.nativeElement.style.width = `${this.firstButton.nativeElement.clientWidth}px`
+    this.viewSwitcherIndicator.nativeElement.style.width = `${this.firstButton.nativeElement.clientWidth}px`;
   }
 
-  filterCourses(filter: "recent" | "active" | "archived") {
-    if (filter === "recent") {
+  filterCourses(filter: 'recent' | 'active' | 'archived') {
+    if (filter === 'recent') {
       this.courses = [...this.allCourses];
     } else {
       let filteredCourses: Course[] = [];
-  
+
       this.allCourses.forEach((course) => {
         if (course.status === filter) {
           filteredCourses.push(course);
         }
-      })
-  
+      });
+
       this.courses = [...filteredCourses];
     }
   }
@@ -52,11 +52,10 @@ export class CoursesOverviewComponent implements AfterViewInit {
     const buttons = this.elementRef.nativeElement.querySelectorAll('button');
     const newPosition = button.offsetLeft - button.parentElement!.offsetLeft;
 
-    this.viewSwitcherIndicator.nativeElement.style.width = `${button.clientWidth}px`
-    this.viewSwitcherIndicator.nativeElement.style.transform = `translateX(${newPosition}px)`
+    this.viewSwitcherIndicator.nativeElement.style.width = `${button.clientWidth}px`;
+    this.viewSwitcherIndicator.nativeElement.style.transform = `translateX(${newPosition}px)`;
 
-    this.filterCourses(button.id as "recent" | "active" | "archived")
-    
+    this.filterCourses(button.id as 'recent' | 'active' | 'archived');
 
     buttons.forEach((btn: HTMLButtonElement) => {
       btn.classList.remove('active');
@@ -70,31 +69,30 @@ export class CoursesOverviewComponent implements AfterViewInit {
 
   handleScroller(scroller: ElementRef, show: boolean) {
     if (show) {
-      scroller.nativeElement.style.opacity = "1"
+      scroller.nativeElement.style.opacity = '1';
     } else {
-      scroller.nativeElement.style.opacity = "0"
+      scroller.nativeElement.style.opacity = '0';
     }
   }
 
   onMouseOver(e: MouseEvent) {
-    this.handleScroller(this.scrollRight, this.showRightScroll)
-    this.handleScroller(this.scrollLeft, this.showLeftScroll)
+    this.handleScroller(this.scrollRight, this.showRightScroll);
+    this.handleScroller(this.scrollLeft, this.showLeftScroll);
   }
   onMouseLeave(e: MouseEvent) {
-    this.handleScroller(this.scrollRight, false)
-    this.handleScroller(this.scrollLeft, false)
-
+    this.handleScroller(this.scrollRight, false);
+    this.handleScroller(this.scrollLeft, false);
   }
 
   scrollToTheRight() {
     const courseListScrollWidth = this.courseList.nativeElement.scrollWidth;
-    this.courseList.nativeElement.scroll({left: courseListScrollWidth, behavior: 'smooth'})
+    this.courseList.nativeElement.scroll({ left: courseListScrollWidth, behavior: 'smooth' });
     this.showRightScroll = false;
     this.showLeftScroll = true;
     this.handleScroller(this.scrollRight, false);
   }
   scrollToTheLeft() {
-    this.courseList.nativeElement.scroll({left: 0, behavior: 'smooth'})
+    this.courseList.nativeElement.scroll({ left: 0, behavior: 'smooth' });
     this.showLeftScroll = false;
     this.showRightScroll = true;
     this.handleScroller(this.scrollLeft, false);
