@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { StudyComponent } from './components/study/study.component';
 
 const titleAppendix = " @studyhub"
 
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent, title: "home" + titleAppendix },
   { path: 'login', component: LoginComponent, title: "login" + titleAppendix },
   { path: 'register', component: RegisterComponent, title: "register" + titleAppendix },
-  { path: 'dashboard', component: DashboardComponent, title: "dashboard" + titleAppendix }
+  { path: 'dashboard', component: DashboardComponent, title: "dashboard" + titleAppendix },
+  { path: 'study', component: StudyComponent, title: "study" + titleAppendix },
 ];
 
 @NgModule({

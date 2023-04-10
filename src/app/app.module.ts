@@ -19,6 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleDescriptionComponent } from './components/title-description/title-description.component';
+import { OverviewComponent } from './components/overview/overview.component';
+import { StudyComponent } from './components/study/study.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { TitleDescriptionComponent } from './components/title-description/title-
     CourseComponent,
     CourseStatusComponent,
     ExamsOverviewComponent,
-    TitleDescriptionComponent
+    TitleDescriptionComponent,
+    OverviewComponent,
+    StudyComponent
   ],
   imports: [
     BrowserModule,

@@ -7,18 +7,18 @@
     </div>
   </div>
   <ul id="menu-links">
-    <li>
+    <li  #overviewPage id="dashboard" (click)="setActivePage(overviewPage)">
       <!-- <img src="assets/icons/home.svg" alt=""> -->
-      <a href="/">Overview</a>
+      <span>Overview</span>
     </li>
-    <li>
-      <a href="/">Study</a>
+    <li #studyPage id="study" (click)="setActivePage(studyPage)">
+      <span>Study</span>
     </li>
-    <li>
-      <a href="/">Activity</a>
+    <li #activityPage id="activity" (click)="setActivePage(activityPage)">
+      <span>Activity</span>
     </li>
-    <li>
-      <a href="/">Help</a>
+    <li #helpPage id="help" (click)="setActivePage(helpPage)">
+      <span>Help</span>
     </li>
   </ul>
   <div id="menu-container">
