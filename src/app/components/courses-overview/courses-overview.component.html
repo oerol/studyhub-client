@@ -1,8 +1,8 @@
 <app-title-description (clickEvent)="goToCourses()" [title]="'My courses'" [description]="'Here\'s an overview of your current courses.'"></app-title-description>
 <div id="course-view-switcher">
-  <button #recentButton class="active" (click)="setActiveButton(recentButton)">Recent</button>
-  <button #upcomingButton (click)="setActiveButton(upcomingButton)">Upcoming</button>
-  <button #reviseButton (click)="setActiveButton(reviseButton)">Revise</button>
+  <button #recentButton id="recent" class="active" (click)="setActiveButton(recentButton)">Recent</button>
+  <button #upcomingButton id="active" (click)="setActiveButton(upcomingButton)">Upcoming</button>
+  <button #reviseButton id="archived" (click)="setActiveButton(reviseButton)">Revise</button>
   <div #viewSwitcherIndicator id="indicator"></div>
 </div>
 

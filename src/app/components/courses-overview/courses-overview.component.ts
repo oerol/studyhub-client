@@ -9,7 +9,8 @@ import { CourseService } from 'src/app/services/course.service';
   styleUrls: ['./courses-overview.component.scss']
 })
 export class CoursesOverviewComponent implements AfterViewInit {
-  courses: Course[] = [];
+  courses: Course[] = []; /* courses visible to the user */
+  allCourses: Course[] = []; /* all retrieved courses */
   showLeftScroll: boolean = false;
   showRightScroll: boolean = true;
   @ViewChild('courseList') courseList!: ElementRef<HTMLElement>;
@@ -19,7 +20,8 @@ export class CoursesOverviewComponent implements AfterViewInit {
   @ViewChild('viewSwitcherIndicator') viewSwitcherIndicator!: ElementRef<HTMLElement>;
 
   constructor(private courseService: CourseService, private router: Router, private elementRef: ElementRef) {
-    this.courses = courseService.getCourses();
+    this.allCourses = courseService.getCourses();
+    this.courses = [...this.allCourses];
   }
 
   ngAfterViewInit(): void {
@@ -30,13 +32,32 @@ export class CoursesOverviewComponent implements AfterViewInit {
     this.viewSwitcherIndicator.nativeElement.style.width = `${this.firstButton.nativeElement.clientWidth}px`
   }
 
+  filterCourses(filter: "recent" | "active" | "archived") {
+    if (filter === "recent") {
+      this.courses = [...this.allCourses];
+    } else {
+      let filteredCourses: Course[] = [];
+  
+      this.allCourses.forEach((course) => {
+        if (course.status === filter) {
+          filteredCourses.push(course);
+        }
+      })
+  
+      this.courses = [...filteredCourses];
+    }
+  }
+
   setActiveButton(button: HTMLButtonElement): void {
     const buttons = this.elementRef.nativeElement.querySelectorAll('button');
     const newPosition = button.offsetLeft - button.parentElement!.offsetLeft;
 
     this.viewSwitcherIndicator.nativeElement.style.width = `${button.clientWidth}px`
     this.viewSwitcherIndicator.nativeElement.style.transform = `translateX(${newPosition}px)`
+
+    this.filterCourses(button.id as "recent" | "active" | "archived")
     
+
     buttons.forEach((btn: HTMLButtonElement) => {
       btn.classList.remove('active');
     });
