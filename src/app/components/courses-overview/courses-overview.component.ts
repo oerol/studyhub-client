@@ -13,15 +13,20 @@ export class CoursesOverviewComponent implements AfterViewInit {
   allCourses: Course[] = []; /* all retrieved courses */
   showLeftScroll: boolean = false;
   showRightScroll: boolean = true;
+  showScroller: boolean = false;
   @ViewChild('courseList') courseList!: ElementRef<HTMLElement>;
   @ViewChild('scrollRight') scrollRight!: ElementRef<HTMLElement>;
   @ViewChild('scrollLeft') scrollLeft!: ElementRef<HTMLElement>;
   @ViewChild('recentButton') firstButton!: ElementRef<HTMLElement>;
   @ViewChild('viewSwitcherIndicator') viewSwitcherIndicator!: ElementRef<HTMLElement>;
 
+
+
   constructor(private courseService: CourseService, private router: Router, private elementRef: ElementRef) {
     this.allCourses = courseService.getCourses();
     this.courses = [...this.allCourses];
+
+    this.handleScrollers();
   }
 
   ngAfterViewInit(): void {
@@ -46,6 +51,7 @@ export class CoursesOverviewComponent implements AfterViewInit {
 
       this.courses = [...filteredCourses];
     }
+    this.handleScrollers();
   }
 
   setActiveButton(button: HTMLButtonElement): void {
@@ -67,6 +73,17 @@ export class CoursesOverviewComponent implements AfterViewInit {
     this.router.navigate(['/']);
   }
 
+  handleScrollers() {
+    const containedCourses = 5;
+    console.log(this.courses.length);
+    
+    if (this.courses.length > containedCourses) {
+      this.showScroller = true;
+    } else {
+      this.showScroller = false;
+    }
+  }
+
   handleScroller(scroller: ElementRef, show: boolean) {
     if (show) {
       scroller.nativeElement.style.opacity = '1';
@@ -76,12 +93,16 @@ export class CoursesOverviewComponent implements AfterViewInit {
   }
 
   onMouseOver(e: MouseEvent) {
-    this.handleScroller(this.scrollRight, this.showRightScroll);
-    this.handleScroller(this.scrollLeft, this.showLeftScroll);
+    if (this.showScroller) {
+      this.handleScroller(this.scrollRight, this.showRightScroll);
+      this.handleScroller(this.scrollLeft, this.showLeftScroll);
+    }
   }
   onMouseLeave(e: MouseEvent) {
-    this.handleScroller(this.scrollRight, false);
-    this.handleScroller(this.scrollLeft, false);
+    if (this.showScroller) {
+      this.handleScroller(this.scrollRight, false);
+      this.handleScroller(this.scrollLeft, false);
+    }
   }
 
   scrollToTheRight() {
