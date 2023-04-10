@@ -4,11 +4,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Exam } from 'src/app/interfaces/exam';
 import { ExamService } from 'src/app/services/exam.service';
+import { tableAnimation } from './table.animation';
 
 @Component({
   selector: 'app-exams-overview',
   templateUrl: './exams-overview.component.html',
   styleUrls: ['./exams-overview.component.scss'],
+  animations: [tableAnimation]
 })
 export class ExamsOverviewComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'date', 'type', 'attempts', 'progress', 'credits', 'difficulty', 'desiredGrade', 'actualGrade'];
