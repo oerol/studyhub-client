@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleDescriptionComponent } from './components/title-description/title-description.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { StudyComponent } from './components/study/study.component';
+import { PomodoroPauseComponent } from './components/pomodoro-pause/pomodoro-pause.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { StudyComponent } from './components/study/study.component';
     ExamsOverviewComponent,
     TitleDescriptionComponent,
     OverviewComponent,
-    StudyComponent
+    StudyComponent,
+    PomodoroPauseComponent
   ],
   imports: [
     BrowserModule,

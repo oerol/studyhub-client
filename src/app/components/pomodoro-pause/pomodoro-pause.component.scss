@@ -1,0 +1,40 @@
+.pomodoro {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: white;
+    top: 0;
+    z-index: 1;
+
+    padding: 300px 700px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#controls {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        cursor: pointer;
+    }
+}
+
+#timer {
+    font-size: 7rem;
+    font-weight: bold;
+    margin: 30px 0px;
+}
+
+button {
+    width: 100%;
+    background-color: rgb(59, 59, 59);
+    color: white;
+    border: 1px solid gray;
+    padding: 10px;
+    font-weight: bold;
+}
