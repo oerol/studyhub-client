@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./study.component.scss']
 })
 export class StudyComponent {
-
+  pomodoroBreak: boolean = true;
+  exitPomodoro() {
+    this.pomodoroBreak = false;
+  }
 }
