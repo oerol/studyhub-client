@@ -1,7 +1,7 @@
 <div id="dashboard">
     <app-header></app-header>
     <main>
-      <app-pomodoro-pause *ngIf="pomodoroBreak" (clickEvent)="exitPomodoro()"></app-pomodoro-pause>
+      <app-pomodoro-pause *ngIf="pomodoroBreak" [@fadeIn] (clickEvent)="exitPomodoro()"></app-pomodoro-pause>
     </main>
   </div>
   

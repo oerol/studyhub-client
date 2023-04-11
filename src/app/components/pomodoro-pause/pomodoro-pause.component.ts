@@ -4,6 +4,7 @@ import { Subscription, timer } from 'rxjs';
   selector: 'app-pomodoro-pause',
   templateUrl: './pomodoro-pause.component.html',
   styleUrls: ['./pomodoro-pause.component.scss'],
+
 })
 export class PomodoroPauseComponent implements OnInit {
   @Output() clickEvent = new EventEmitter();
