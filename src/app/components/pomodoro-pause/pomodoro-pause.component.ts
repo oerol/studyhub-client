@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { timer } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 @Component({
   selector: 'app-pomodoro-pause',
   templateUrl: './pomodoro-pause.component.html',
@@ -8,6 +8,7 @@ import { timer } from 'rxjs';
 export class PomodoroPauseComponent implements OnInit {
   @Output() clickEvent = new EventEmitter();
 
+  timerObservable!: Subscription;
   pauseDurationInMinutes = 10;
   pauseDuration: number = 60 * this.pauseDurationInMinutes;
   timer: string = '';
@@ -18,6 +19,7 @@ export class PomodoroPauseComponent implements OnInit {
 
   onClick() {
     this.clickEvent.emit();
+    this.timerObservable.unsubscribe()
   }
 
   secondsToMinutesSeconds(seconds: number) {
@@ -34,8 +36,10 @@ export class PomodoroPauseComponent implements OnInit {
 
   startTimer() {
     const source = timer(0, 1000);
-    const timerObservable = source.subscribe((val) => {
+    this.timerObservable = source.subscribe((val) => {
       const remainingSeconds = this.pauseDuration - val;
+      console.log("AY");
+      
       if (remainingSeconds >= 0) {
         this.setTimerText(remainingSeconds);
       } else {
