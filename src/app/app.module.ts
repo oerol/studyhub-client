@@ -22,6 +22,7 @@ import { TitleDescriptionComponent } from './components/title-description/title-
 import { OverviewComponent } from './components/overview/overview.component';
 import { StudyComponent } from './components/study/study.component';
 import { PomodoroPauseComponent } from './components/pomodoro-pause/pomodoro-pause.component';
+import { StudyPartnerComponent } from './components/study-partner/study-partner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { PomodoroPauseComponent } from './components/pomodoro-pause/pomodoro-pau
     TitleDescriptionComponent,
     OverviewComponent,
     StudyComponent,
-    PomodoroPauseComponent
+    PomodoroPauseComponent,
+    StudyPartnerComponent
   ],
   imports: [
     BrowserModule,

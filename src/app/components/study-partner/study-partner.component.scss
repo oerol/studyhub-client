@@ -1,0 +1,12 @@
+#study-partner {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 320px;
+}
+span {
+    font-weight: bold;
+}
+iframe {
+    border-radius: 5px;
+}
