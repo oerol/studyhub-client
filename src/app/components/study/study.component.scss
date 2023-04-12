@@ -1,0 +1,39 @@
+#study {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: rgb(36, 36, 36);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid black;
+  padding: 5px 20px;
+  box-sizing: border-box;
+
+  #session-information {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    #session-count {
+      margin-right: 50px;
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: aqua;
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding: 3px 10px;
+
+  transition: 0.3s ease-out background-color;
+
+  &:hover {
+    background-color: rgb(102, 255, 0);
+  }
+}

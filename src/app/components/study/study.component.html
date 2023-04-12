@@ -1,6 +1,17 @@
 <div id="dashboard">
     <app-header></app-header>
     <main>
+      <div id="study">
+        <div id="session-information">
+          <span id="session-count">1/5 Study Session</span>
+          <span>Grundlagen des Maschinellen Lernens</span>
+          <span>→</span>
+          <span>1. Vorlesung</span>
+        </div>
+        <div id="session-start">
+          <button>Start Studying</button>
+        </div>
+      </div>
       <app-pomodoro-pause *ngIf="pomodoroBreak" [@fadeIn] (clickEvent)="exitPomodoro()"></app-pomodoro-pause>
     </main>
   </div>
